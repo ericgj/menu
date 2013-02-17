@@ -36,15 +36,18 @@
       .add('Remove "Add item"', function(){
         menu.remove('add-item');
         menu.remove('Remove "Add item"');
-      });
+      })
+      .add('Clear menu');
 
       menu.on('select', function(item){
         console.log('selected "%s"', item);
       });
 
-      menu.on('Add item', function(){
+      menu.on('add-item', function(){
         console.log('added an item');
       });
+
+      menu.on('clear-menu', menu.clear.bind(menu));
 
       oncontextmenu = function(e){
         e.preventDefault();

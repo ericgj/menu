@@ -190,6 +190,22 @@ Menu.prototype.remove = function(slug){
   return this;
 };
 
+
+/**
+ * Remove all menu items
+ *
+ * @return {Menu}
+ * @api public
+ */
+
+Menu.prototype.clear = function(){
+  var keys = util.keys(this.items)
+  for (i=0;i<keys.length;i++){
+    this.remove(keys[i]);
+  };
+  return this;
+};
+
 /**
  * Check if this menu has an item with the given `slug`.
  *
