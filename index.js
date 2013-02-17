@@ -5,6 +5,7 @@
 
 var Emitter = require('emitter')
   , dom     = require('dom')
+  , util    = require('object')
 
 /**
  * Expose `Menu`.
@@ -201,6 +202,9 @@ Menu.prototype.has = function(slug){
   return !! (this.items[slug] || this.items[createSlug(slug)]);
 };
 
+Menu.prototype.length = function(){
+  return util.length(this.items);
+}
 
 /**
  * Move context menu below reference element (or selector) 

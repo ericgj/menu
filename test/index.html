@@ -64,7 +64,7 @@
       }
       dropdown.add('one').add('two').add('three');
       dropdown.add('count', function(){
-        console.log('number of menu items: %s', dropdown.items.length);
+        console.log('number of menu items: %s', dropdown.length());
       });
 
       var dropdown2 = Menu();
@@ -77,7 +77,7 @@
       }
       dropdown2.add('one').add('two').add('three');
       dropdown2.add('count', function(){
-        console.log('number of menu items: %s', dropdown2.items.length);
+        console.log('number of menu items: %s', dropdown2.length());
       });
 
     </script>
