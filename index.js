@@ -201,6 +201,40 @@ Menu.prototype.has = function(slug){
   return !! (this.items[slug] || this.items[createSlug(slug)]);
 };
 
+
+/**
+ * Move context menu below reference element (or selector) 
+ *
+ * @param {String|Element} ref reference element
+ * @return {Menu}
+ * @api public
+ */
+
+Menu.prototype.moveBelow = function(ref){
+  ref = toElem(ref);
+  return this.moveTo(ref.offsetLeft,
+                     ref.offsetTop + ref.offsetHeight
+                    );
+}
+
+/**
+ * Move context menu to the right of reference element (or selector) 
+ *
+ * @param {String|Element} ref reference element
+ * @return {Menu}
+ * @api public
+ */
+
+Menu.prototype.moveRight = function(ref){
+  ref = toElem(ref);
+  return this.moveTo(ref.offsetLeft + ref.offsetWidth,
+                     ref.offsetTop
+                    );
+}
+
+/**
+ * Move context menu to `(x, y)`.
+ *
 /**
  * Move context menu to `(x, y)`.
  *
@@ -213,6 +247,30 @@ Menu.prototype.has = function(slug){
 Menu.prototype.moveTo = function(x, y){
   this.menu.css('top', y).css('left',x);
   return this;
+};
+
+/**
+ * Toggle menu based on current display state
+ *
+ * @return {Menu}
+ * @api public
+ */
+
+Menu.prototype.toggle = function(){
+  return this.isVisible()
+    ? this.hide()
+    : this.show();
+};
+
+/**
+ * Get current display state of menu
+ *
+ * @return {Menu}
+ * @api public
+ */
+
+Menu.prototype.isVisible = function(){
+  return !('none'==this.menu.css('display'));
 };
 
 /**
@@ -254,6 +312,20 @@ function createSlug(str) {
     .toLowerCase()
     .replace(/ +/g, '-')
     .replace(/[^a-z0-9-]/g, '');
-}
+};
 
+/**
+ * Return element from selector string
+ *
+ * @param {String|Element} el element or selector string
+ * @param {Element} reference element (defaults to document)
+ * @return {Element}
+ * @api private
+ */
+
+function toElem(el,ref) {
+  if (!ref) ref = document;
+  if ('string'== typeof el) el = ref.querySelector(el);
+  return el;
+};
 

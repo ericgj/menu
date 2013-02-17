@@ -4,14 +4,30 @@
     <title>Menu</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="../build/build.css" />
+    <style>
+
+      .dropdown {
+        text-decoration: none;
+        border: 1px solid gray;
+        padding: 5px 8px;
+        margin: 3px;
+      }
+
+      .dropdown:hover {
+        text-decoration: underline;
+      }
+
+    </style>
   </head>
   <body>
-    <title>Menu</title>
+    <h1>Menu</h1>
+    <a href="#" class="dropdown below">Dropdown menu - below</a>
+    <a href="#" class="dropdown right">Dropdown menu - right</a>
     <script src="../build/build.js"></script>
     <script>
-      var menu = require('menu');
+      var Menu = require('menu');
   
-      menu = menu();
+      menu = Menu();
   
       menu
       .add('add-item', 'Add <em>item</em>')
@@ -35,6 +51,35 @@
         menu.moveTo(e.pageX, e.pageY);
         menu.show();
       };
+
+      // dropdown menu tests
+
+      var dropdown = Menu();
+      var anchor = document.querySelector('.dropdown.right');
+      dropdown.moveRight(anchor);
+      anchor.onclick = function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        dropdown.toggle();
+      }
+      dropdown.add('one').add('two').add('three');
+      dropdown.add('count', function(){
+        console.log('number of menu items: %s', dropdown.items.length);
+      });
+
+      var dropdown2 = Menu();
+      var anchor2 = document.querySelector('.dropdown.below');
+      dropdown2.moveBelow('.dropdown.below');
+      anchor2.onclick = function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        dropdown2.toggle();
+      }
+      dropdown2.add('one').add('two').add('three');
+      dropdown2.add('count', function(){
+        console.log('number of menu items: %s', dropdown2.items.length);
+      });
+
     </script>
   </body>
 </html>
