@@ -218,6 +218,13 @@ Menu.prototype.has = function(slug){
   return !! (this.items[slug] || this.items[createSlug(slug)]);
 };
 
+/**
+ * Number of menu items
+ *
+ * @return {Numeric}
+ * @api public
+ */
+
 Menu.prototype.length = function(){
   return util.length(this.items);
 }
