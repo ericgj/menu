@@ -230,39 +230,6 @@ Menu.prototype.length = function(){
 }
 
 /**
- * Move context menu below reference element (or selector) 
- *
- * @param {String|Element} ref reference element
- * @return {Menu}
- * @api public
- */
-
-Menu.prototype.moveBelow = function(ref){
-  ref = toElem(ref);
-  return this.moveTo(ref.offsetLeft,
-                     ref.offsetTop + ref.offsetHeight
-                    );
-}
-
-/**
- * Move context menu to the right of reference element (or selector) 
- *
- * @param {String|Element} ref reference element
- * @return {Menu}
- * @api public
- */
-
-Menu.prototype.moveRight = function(ref){
-  ref = toElem(ref);
-  return this.moveTo(ref.offsetLeft + ref.offsetWidth,
-                     ref.offsetTop
-                    );
-}
-
-/**
- * Move context menu to `(x, y)`.
- *
-/**
  * Move context menu to `(x, y)`.
  *
  * @param {Number} x

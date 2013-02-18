@@ -59,7 +59,7 @@
 
       var dropdown = Menu();
       var anchor = document.querySelector('.dropdown.right');
-      dropdown.moveRight(anchor);
+      dropdown.moveTo(anchor.offsetLeft + anchor.offsetWidth, anchor.offsetTop);
       anchor.onclick = function(e){
         e.preventDefault();
         e.stopPropagation();
@@ -72,7 +72,7 @@
 
       var dropdown2 = Menu();
       var anchor2 = document.querySelector('.dropdown.below');
-      dropdown2.moveBelow('.dropdown.below');
+      dropdown2.moveTo(anchor2.offsetLeft, anchor2.offsetTop + anchor2.offsetHeight);
       anchor2.onclick = function(e){
         e.preventDefault();
         e.stopPropagation();
