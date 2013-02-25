@@ -90,7 +90,10 @@
       // setInput test
 
       var setInputTrigger = document.querySelector('#set-input-test-slug');
-      setInputTrigger.onclick = function(){ menu.setInput('add-item') };
+      setInputTrigger.onclick = function(){ 
+        menu.setInput('add-item'); 
+        setInputTrigger.innerHTML = menu.getItemText('add-item');
+      };
 
       var setInputTrigger2 = document.querySelector('#set-input-test-text');
       setInputTrigger2.onclick = function(){ menu.setInput('Edit Item') };

@@ -232,6 +232,18 @@ Menu.prototype.getItem = function(slug){
 };
 
 /**
+ * Return menu item text with the given 'slug'.
+ *
+ * @param {String} slug
+ * @return {String}
+ * @api public
+ */
+
+Menu.prototype.getItemText = function(slug){
+  return dom(this.getItem(slug)).find('a').get(0).innerHTML;
+};
+
+/**
  * Check if this menu has an item with the given `slug` or text.
  *
  * @param {String} slug
