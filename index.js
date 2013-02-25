@@ -207,7 +207,32 @@ Menu.prototype.clear = function(){
 };
 
 /**
- * Check if this menu has an item with the given `slug`.
+ * Select the item with the given `slug' or text from the menu. 
+ *
+ * @param {String} slug
+ * @api public
+ */
+
+Menu.prototype.setInput = function(slug){
+  var item = this.getItem(slug);
+  if (item) item.querySelector('a').click();
+  return this;
+};
+
+/**
+ * Return menu item (element) with the given 'slug' or text.
+ *
+ * @param {String} slug
+ * @return {Element|undefined}
+ * @api public
+ */
+
+Menu.prototype.getItem = function(slug){
+  return (this.items[slug] || this.items[createSlug(slug)]);
+};
+
+/**
+ * Check if this menu has an item with the given `slug` or text.
  *
  * @param {String} slug
  * @return {Boolean}
@@ -215,7 +240,7 @@ Menu.prototype.clear = function(){
  */
 
 Menu.prototype.has = function(slug){
-  return !! (this.items[slug] || this.items[createSlug(slug)]);
+  return !! (this.getItem(slug));
 };
 
 /**
